@@ -1,0 +1,12 @@
+<resources>
+    <style name="AppTheme.noActionBar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="CourseTitle" parent="@android:style/TextAppearance.Material.Medium">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

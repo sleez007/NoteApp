@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.example.noteapp">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme.noActionBar">
+        <receiver
+                android:name=".broadcasts.NoteReminderReceiver"
+                android:enabled="true"
+                android:exported="true"/>
+
+        <service
+                android:name=".services.NoteUploaderJobService"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service
+                android:name=".services.NoteBackupService"
+                android:exported="false" />
+
+        <provider
+                android:name=".contentproviders.NoteKeeperProvider"
+                android:authorities="com.example.noteapp.provider"
+                android:enabled="true"
+                android:exported="true" />
+
+        <activity
+                android:name=".activity.MainActivity"
+                android:label="@string/title_activity_main"
+                android:theme="@style/AppTheme.noActionBar.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                        android:host="oilperfumes.ng"
+                        android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".activity.NoteListActivity"
+                android:label="@string/title_activity_note_list"
+                android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+                android:name=".activity.NoteActivity"
+                android:label="@string/edit_note" />
+    </application>
+
+</manifest>
